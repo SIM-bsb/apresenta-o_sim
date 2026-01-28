@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAZAPSIM Premium - Detalhes Técnicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette Dark Modern (Yup Chat Inspired) */
+            --bg-body: #0f172a;
+            /* Slate 900 */
+            --bg-card: #1e293b;
+            /* Slate 800 */
+            --bg-card-hover: #334155;
+            /* Slate 700 */
+
+            --primary: #34d399;
+            /* Emerald 400 - Vibrant Green */
+            --primary-glow: rgba(52, 211, 153, 0.4);
+
+            --accent: #60a5fa;
+            /* Blue 400 */
+            --accent-purple: #a78bfa;
+            /* Violet 400 */
+
+            --text-main: #f8fafc;
+            /* Slate 50 */
+            --text-secondary: #94a3b8;
+            /* Slate 400 */
+
+            --border: rgba(255, 255, 255, 0.1);
+            --radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.05), transparent 50%);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-top: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(90deg, rgba(52, 211, 153, 0.2), rgba(96, 165, 250, 0.2));
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            border-radius: 100px;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, white, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: white;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-top: 60px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--accent);
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        p,
+        li {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Cards */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Grid de Features */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-box h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Tabela Specs */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .specs-table th,
+        .specs-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .specs-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Botão Voltar/Topo */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #020617;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--primary-glow);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Destaques Especiais */
+        .highlight-box {
+            background: linear-gradient(145deg, rgba(96, 165, 250, 0.1), rgba(15, 23, 42, 0.4));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="badge">SOLUÇÃO ENTERPRISE</div>
+            <h1>IAZAPSIM Premium</h1>
+            <p style="font-size: 1.4em; max-width: 600px; margin: 0 auto;">Central de Atendimento Inteligente &
+                Ecossistema de Automação Full-Service</p>
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-outline">← Voltar para Apresentação</a>
+                <a href="#contato" class="btn btn-primary">Contratar Agora</a>
+            </div>
+        </header>
+
+        <div class="section-card">
+            <h2>📋 Apresentação da Solução</h2>
+            <p>O <strong>IAZAPSIM Premium</strong> é mais do que uma central de atendimento: é uma plataforma completa
+                de <strong>hiperautomação empresarial</strong>. Centralizamos comunicação, vendas, financeiro e jurídico
+                em um único sistema inteligente.</p>
+
+            <div style="display: flex; gap: 40px; margin-top: 30px; flex-wrap: wrap; justify-content: center;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: bold; color: var(--primary);">+35%</div>
+                    <p>Produtividade Geral</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: bold; color: var(--primary);">+40%</div>
+                    <p>Fechamento de Contratos</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: bold; color: var(--primary);">-60%</div>
+                    <p>Tempo em Tarefas Manuais</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>🤖 Automações Inteligentes (Novo)</h2>
+            <p>Transforme processos manuais em fluxos automáticos de alta performance.</p>
+
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>⚖️ Automação Jurídica & Contratos</h3>
+                    <p>Adeus à burocracia na hora de fechar negócio.</p>
+                    <ul>
+                        <li><strong>Geração Automática:</strong> Cria contratos personalizados baseados nos dados do
+                            CRM.</li>
+                        <li><strong>Envio Inteligente:</strong> Assim que o card move para "Fechado", o contrato vai
+                            para o cliente (WhatsApp/E-mail).</li>
+                        <li><strong>Assinatura Digital:</strong> Integração nativa para assinatura jurídica válida.</li>
+                        <li><strong>Versionamento:</strong> Histórico completo de todas as alterações.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>💰 Automação Financeira</h3>
+                    <p>Gestão de cobranças e fluxo de caixa no piloto automático.</p>
+                    <ul>
+                        <li><strong>Cobrança Preventiva:</strong> Lembretes automáticos 7, 3 e 1 dia antes do
+                            vencimento.</li>
+                        <li><strong>Régua de Cobrança:</strong> Mensagens de recuperação para inadimplentes.</li>
+                        <li><strong>Conciliação Bancária:</strong> Baixa automática de pagamentos (Integração
+                            Asaas/Bancos).</li>
+                        <li><strong>Upsell Automático:</strong> Sugestão de novos produtos baseada no histórico de
+                            compras.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>📅 Automação Administrativa</h3>
+                    <p>Sua secretária executiva virtual 24 horas.</p>
+                    <ul>
+                        <li><strong>Agendamento Inteligente:</strong> Sincronia total com Google Calendar.</li>
+                        <li><strong>Confirmação de Reuniões:</strong> Reduz no-shows com lembretes automáticos.</li>
+                        <li><strong>Gestão de Ausências:</strong> Redistribui leads automaticamente se o vendedor
+                            estiver de férias.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>🔌 Funcionalidades Core (Ominichannel)</h2>
+
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>📱 Central de Canais</h3>
+                    <ul>
+                        <li>WhatsApp (Múltiplas Conexões)</li>
+                        <li>Instagram Direct & Comments</li>
+                        <li>Facebook Messenger</li>
+                        <li>Telegram Bots</li>
+                        <li>E-mail Compartilhado</li>
+                        <li>Widget de Chat para Site</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>👥 Gestão de Equipe & Filas</h3>
+                    <ul>
+                        <li>Distribuição Round-Robin (Cargas iguais)</li>
+                        <li>Permissões hierárquicas (Admin/Agente)</li>
+                        <li>Monitoramento em Tempo Real</li>
+                        <li>Sussurro (Notas internas nas conversas)</li>
+                        <li>Transferência entre departamentos</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>📊 CRM & Dados</h3>
+                    <ul>
+                        <li>Perfil 360° do Cliente</li>
+                        <li>Segmentação por Etiquetas/Tags</li>
+                        <li>Kanban de Vendas Personalizável</li>
+                        <li>Relatórios de Performance (CSAT, KPIs)</li>
+                        <li>Exportação de Dados (CSV/Excel)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>💡 Por que IAZAPSIM é Superior?</h2>
+
+            <div class="feature-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="highlight-box" style="margin: 0; border-color: var(--primary);">
+                    <h3>🚀 Simplicidade e Potência</h3>
+                    <p>Ao contrário de CRMs complexos que ninguém usa, nossa interface é intuitiva como o WhatsApp, mas
+                        poderosa como um ERP. Sua equipe aprende em minutos.</p>
+                </div>
+
+                <div class="highlight-box" style="margin: 0; border-color: var(--accent);">
+                    <h3>🔐 Segurança Enterprise</h3>
+                    <p>Criptografia de ponta a ponta, backup automático diário, logs de auditoria detalhados e total
+                        conformidade com a LGPD. Seus dados são sagrados.</p>
+                </div>
+
+                <div class="highlight-box" style="margin: 0; border-color: var(--accent-purple);">
+                    <h3>🔗 API Aberta & Webhooks</h3>
+                    <p>Conecte o IAZAPSIM a qualquer sistema que você já usa. SAP, Salesforce, RD Station ou sistemas
+                        legados. Nossa API REST é completa e documentada.</p>
+                </div>
+
+                <div class="highlight-box" style="margin: 0;">
+                    <h3>📈 ROI Comprovado</h3>
+                    <p>"Depois de implementar, nossa equipe comercial passou a fechar 40% mais contratos. O tempo
+                        administrativo virou tempo de vendas." — Antônio Nunes, Sócio Proprietário.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>📋 Especificações Técnicas Resumidas</h2>
+            <table class="specs-table">
+                <tr>
+                    <td width="40%"><strong>Conexões WhatsApp</strong></td>
+                    <td>Múltiplos números simultâneos (API Oficial ou Web)</td>
+                </tr>
+                <tr>
+                    <td><strong>Capacidade de Atendimento</strong></td>
+                    <td>Ilimitada (Escala automática de servidores)</td>
+                </tr>
+                <tr>
+                    <td><strong>Automações</strong></td>
+                    <td>Construtor de Fluxos No-Code (Arrastar e Soltar)</td>
+                </tr>
+                <tr>
+                    <td><strong>Disponibilidade (SLA)</strong></td>
+                    <td>99.9% Uptime Garantido</td>
+                </tr>
+                <tr>
+                    <td><strong>Suporte Técnico</strong></td>
+                    <td>Prioritário (WhatsApp/Videoconferência)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-card" id="contato">
+            <h2>🚀 Comece Sua Transformação Agora</h2>
+            <p>Não deixe dinheiro na mesa por falta de atendimento ou processos manuais.</p>
+
+            <ol style="color: var(--text-secondary); margin-left: 20px; font-size: 1.1em; margin-bottom: 40px;">
+                <li style="margin-bottom: 10px;">Aprovação imediata da proposta</li>
+                <li style="margin-bottom: 10px;">Onboarding guiado com especialista</li>
+                <li style="margin-bottom: 10px;">Migração da sua base de contatos atual</li>
+                <li style="margin-bottom: 10px;">Treinamento completo da sua equipe</li>
+            </ol>
+
+            <div style="text-align: center;">
+                <a href="https://wa.me/5561981457006?text=Quero%20contratar%20o%20IAZAPSIM%20Premium%20e%20automatizar%20minha%20empresa!"
+                    target="_blank" class="btn btn-primary" style="font-size: 1.3em; padding: 20px 50px;">
+                    QUERO CONTRATAR AGORA
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9em;">Fale com nosso Gerente de Contas</p>
+            </div>
+        </div>
+
+        <footer
+            style="text-align: center; color: var(--text-secondary); padding: 40px; opacity: 0.6; font-size: 0.9em;">
+            <p><strong>IAZAPSIM</strong> - Inteligência que Gera Resultados.<br>
+                Brasília - DF • Atendendo todo o Brasil</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

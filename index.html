@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Leads - Apresentação Completa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette Dark Modern (Yup Chat Inspired) */
+            --bg-body: #0f172a;
+            /* Slate 900 */
+            --bg-card: #1e293b;
+            /* Slate 800 */
+            --bg-card-hover: #334155;
+            /* Slate 700 */
+
+            --primary: #34d399;
+            /* Emerald 400 - Vibrant Green */
+            --primary-glow: rgba(52, 211, 153, 0.4);
+
+            --accent: #60a5fa;
+            /* Blue 400 */
+
+            --text-main: #f8fafc;
+            /* Slate 50 */
+            --text-secondary: #94a3b8;
+            /* Slate 400 */
+
+            --border: rgba(255, 255, 255, 0.1);
+            --radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(52, 211, 153, 0.1), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(96, 165, 250, 0.1), transparent 40%);
+            color: var(--text-main);
+            padding: 40px 20px;
+        }
+
+        /* --- Estilo dos Slides (Container Principal) --- */
+        .slide {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 700px;
+            background: rgba(30, 41, 59, 0.7);
+            /* Glassmorphism Base */
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin: 0 auto 80px auto;
+            /* Espaçamento entre slides */
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            page-break-after: always;
+        }
+
+        /* Slide Capa */
+        .slide-capa {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            text-align: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+        .slide-capa h1 {
+            font-size: 5em;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Helper Classes */
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-huge {
+            font-size: 4.5em;
+            font-weight: 800;
+            line-height: 1;
+            margin: 20px 0;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-capa h2 {
+            font-size: 1.5em;
+            color: var(--primary);
+            font-weight: 500;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* Títulos Internos */
+        .slide h1 {
+            font-size: 3em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        /* Bento Grid Layout System */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card.span-2 {
+            grid-column: span 2;
+        }
+
+        .bento-card.span-3 {
+            grid-column: span 3;
+        }
+
+        .bento-card.row-2 {
+            grid-row: span 2;
+        }
+
+        .bento-card.highlight {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.4));
+            border-color: var(--primary);
+        }
+
+        .bento-card h3 {
+            font-size: 1.4em;
+            color: white;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .bento-card p {
+            font-size: 1em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .bento-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .badge.success {
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .badge.danger {
+            background: rgba(248, 113, 113, 0.1);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+
+        .badge.info {
+            background: rgba(96, 165, 250, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+
+        /* Stats Big */
+        .stat-huge {
+            font-size: 4.5em;
+            font-weight: 800;
+            line-height: 1;
+            margin: 20px 0;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Botões */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: #020617;
+            font-size: 1.2em;
+            font-weight: 700;
+            padding: 24px 60px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px var(--primary-glow);
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px var(--primary-glow);
+            background: #6ee7b7;
+        }
+
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 16px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .secondary-button:hover {
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        /* Table Modern */
+        .glass-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .glass-table th {
+            text-align: left;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .glass-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-card.span-2,
+            .bento-card.span-3 {
+                grid-column: auto;
+            }
+
+            .slide-capa h1 {
+                font-size: 3em;
+            }
+        }
+
+        /* Helper Classes */
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mt-auto {
+            margin-top: auto;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: monospace;
+            opacity: 0.3;
+        }
+
+        /* Grid de Clientes */
+        .clientes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .cliente-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+
+        .cliente-item:hover {
+            border-color: var(--primary);
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Novas Classes para Stats na Capa */
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-separator {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--border), transparent);
+        }
+
+        /* Hover Glow Effect */
+        .hover-glow {
+            transition: all 0.4s ease;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Icon Wrapper Styles */
+        .bento-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .bento-card:hover .bento-icon-wrapper {
+            background: var(--primary);
+            color: #0f172a;
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .bento-icon {
+            font-size: 1.8em;
+            width: auto;
+            height: auto;
+            background: none;
+            border: none;
+            margin: 0;
+            color: inherit;
+        }
+
+        /* Agent Cards Specifics */
+        .agent-card {
+            flex-direction: row !important;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .agent-card:hover .bento-icon-wrapper {
+            transform: scale(1.1);
+            border-radius: 50%;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse-primary {
+            0% {
+                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(52, 211, 153, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse-primary 2s infinite;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .stat-separator {
+                display: none;
+            }
+
+            .stat-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .clientes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SLIDE 1: CAPA -->
+    <div class="slide slide-capa">
+        <div class="badge success">Sistema v2.0 - Enterprise Edition</div>
+        <h1>Engenharia de Leads<br>& Inteligência Artificial</h1>
+        <h2>A plataforma que automatiza 100% da sua pré-venda e garante conversão 24/7.</h2>
+
+        <div style="display: flex; gap: 40px; margin-top: 40px; justify-content: center; flex-wrap: wrap;">
+            <div class="stat-box">
+                <div class="stat-value">3.4x</div>
+                <div class="stat-label">Mais Vendas</div>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-box">
+                <div class="stat-value">2min</div>
+                <div class="stat-label">Resposta Média</div>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-box">
+                <div class="stat-value">-80%</div>
+                <div class="stat-label">Custo Operacional</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="#slide-cta" class="cta-button pulse-animation">
+                QUERO AUTOMATIZAR AGORA 🚀
+            </a>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: PROBLEMA -->
+    <div class="slide">
+        <h1>Onde você está perdendo dinheiro?</h1>
+        <div class="bento-grid">
+            <div class="bento-card span-2 highlight hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">⚠️</div>
+                </div>
+                <h3>O "Buraco Negro" do WhatsApp</h3>
+                <p>Leads chegam de noite ou fds e ninguém responde. 60% desistem e compram no concorrente que atendeu
+                    primeiro.</p>
+            </div>
+
+            <div class="bento-card hover-glow">
+                <div class="badge danger">Custo Alto</div>
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">💸</div>
+                </div>
+                <h3>Equipe Lenta</h3>
+                <p>Humanos demoram para digitar, esquecem follow-ups e não trabalham 24h.</p>
+            </div>
+
+            <div class="bento-card hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">🎯</div>
+                </div>
+                <h3>Qualificação Zero</h3>
+                <p>Sua equipe perde tempo falando com curiosos em vez de focar em quem tem dinheiro.</p>
+            </div>
+
+            <div class="bento-card span-2 hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">📉</div>
+                </div>
+                <h3>Gestão às Cegas</h3>
+                <p>Sem dados centralizados, você não sabe qual canal traz ROI e qual só gasta orçamento.</p>
+            </div>
+        </div>
+        <div class="slide-number">/ 01</div>
+    </div>
+
+    <!-- SLIDE 3: SOLUÇÃO -->
+    <div class="slide">
+        <h1>Ecossistema Autônomo IAZAPSIM</h1>
+        <div class="bento-grid">
+            <div class="bento-card row-2 highlight hover-glow">
+                <div class="bento-icon-wrapper pulse">
+                    <div class="bento-icon">🧠</div>
+                </div>
+                <h3>Cérebro IA Central</h3>
+                <p>Nossa IA analisa cada mensagem recebida, entende o contexto, qualifica o lead e decide o próximo
+                    passo. Integração total com ChatGPT-4o.</p>
+                <div class="mt-auto">
+                    <div style="font-size: 3em; font-weight: bold; color: white;">24/7</div>
+                    <p>Operação ininterrupta</p>
+                </div>
+            </div>
+
+            <div class="bento-card hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">🌪️</div>
+                </div>
+                <h3>1. Captura Omni</h3>
+                <p>Centralizamos WhatsApp, Insta, Site e E-mail em um funil único e organizado.</p>
+            </div>
+
+            <div class="bento-card hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">⭐</div>
+                </div>
+                <h3>2. Score Preditivo</h3>
+                <p>Cada lead ganha uma nota de 0 a 100 baseada no potencial de compra.</p>
+            </div>
+
+            <div class="bento-card span-2 hover-glow">
+                <div class="bento-icon-wrapper">
+                    <div class="bento-icon">⚡</div>
+                </div>
+                <h3>3. Distribuição Inteligente</h3>
+                <p>Leads quentes vão para vendedores. Leads frios entram em nutrição automática. Ninguém é esquecido.
+                </p>
+            </div>
+        </div>
+        <div class="slide-number">/ 02</div>
+    </div>
+
+    <!-- SLIDE 4: AGENTES -->
+    <div class="slide">
+        <h1>Sua Equipe de Elite (Robôs)</h1>
+        <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="bento-card agent-card">
+                <div class="bento-icon icon-anim">💬</div>
+                <div>
+                    <h3>Concierge 24h</h3>
+                    <p>Atendimento imediato, cordial e humanizado.</p>
+                </div>
+            </div>
+
+            <div class="bento-card agent-card">
+                <div class="bento-icon icon-anim">🕵️</div>
+                <div>
+                    <h3>Hunter</h3>
+                    <p>Faz perguntas chave para qualificar o orçamento.</p>
+                </div>
+            </div>
+
+            <div class="bento-card agent-card">
+                <div class="bento-icon icon-anim">📅</div>
+                <div>
+                    <h3>Scheduler</h3>
+                    <p>Agenda reuniões direto no Google Calendar.</p>
+                </div>
+            </div>
+
+            <div class="bento-card agent-card">
+                <div class="bento-icon icon-anim">🤝</div>
+                <div>
+                    <h3>Closer</h3>
+                    <p>Recupera clientes sumidos com ofertas especiais.</p>
+                </div>
+            </div>
+
+            <div class="bento-card agent-card span-2 highlight">
+                <div class="bento-icon icon-anim">�</div>
+                <div>
+                    <h3>Automação de Contratos & Financeiro</h3>
+                    <p>Gera contratos automaticamente e cobra inadimplentes sem intervenção humana.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">/ 03</div>
+    </div>
+
+    <!-- SLIDE 5: CLIENTES & NICHOS (NOVO) -->
+    <div class="slide">
+        <h1>Especialistas em Qualquer Nicho</h1>
+        <p style="font-size: 1.2em; color: var(--text-secondary); margin-bottom: 30px;">
+            Nossa inteligência artificial é treinada para adaptar-se à linguagem e necessidades de diversos setores.
+        </p>
+
+        <div class="clientes-grid">
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🏗️</span>
+                Construtoras
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🏢</span>
+                Incorporadoras
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🏦</span>
+                Financeiras
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🔑</span>
+                Imobiliárias
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🍽️</span>
+                Restaurantes
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">🥖</span>
+                Varejo
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">💊</span>
+                Farmácias
+            </div>
+            <div class="cliente-item">
+                <span style="font-size: 2em; display: block; margin-bottom: 10px;">⚖️</span>
+                Advocacia
+            </div>
+        </div>
+
+        <div class="bento-card span-3"
+            style="margin-top: 30px; border-color: var(--accent); background: rgba(96, 165, 250, 0.05);">
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+                <div>
+                    <h3>Quer ver todas as funcionalidades?</h3>
+                    <p>Kanban, Automação de Contratos, Gestão Financeira, Disparos em Massa e mais.</p>
+                </div>
+                <a href="detailed.html" class="secondary-button" style="margin-top: 0;">
+                    Saiba TUDO sobre a plataforma ➜
+                </a>
+            </div>
+        </div>
+        <div class="slide-number">/ 04</div>
+    </div>
+
+    <!-- SLIDE 6: DASHBOARD & ROI -->
+    <div class="slide">
+        <h1>Resultados Comprovados</h1>
+
+        <div class="bento-grid" style="margin-bottom: 40px;">
+            <div class="bento-card hover-glow">
+                <p>Leads Processados</p>
+                <div class="stat-huge">1.247</div>
+                <div class="badge success">+32% MoM</div>
+            </div>
+            <div class="bento-card hover-glow">
+                <p>Taxa de Conversão</p>
+                <div class="stat-huge">8.5%</div>
+                <div class="badge success">Recorde</div>
+            </div>
+            <div class="bento-card hover-glow">
+                <p>Receita Adicional</p>
+                <div class="stat-huge" style="font-size: 3.5em;">R$ 27M</div>
+                <p>Em pipeline de vendas</p>
+            </div>
+        </div>
+
+        <table class="glass-table">
+            <thead>
+                <tr>
+                    <th>Métrica</th>
+                    <th>Antes (Manual)</th>
+                    <th>Depois (Com IA)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tempo de 1ª Resposta</td>
+                    <td style="color: #f87171;">4 horas</td>
+                    <td style="color: var(--primary); font-weight: bold;">Imediato</td>
+                </tr>
+                <tr>
+                    <td>Leads Atendidos</td>
+                    <td style="color: #f87171;">40% (o resto desiste)</td>
+                    <td style="color: var(--primary); font-weight: bold;">100%</td>
+                </tr>
+                <tr>
+                    <td>Custo por Venda</td>
+                    <td style="color: #f87171;">Alto (Equipe grande)</td>
+                    <td style="color: var(--primary); font-weight: bold;">Mínimo (Escalável)</td>
+                </tr>
+                <tr>
+                    <td>Geração de Contratos</td>
+                    <td style="color: #f87171;">2-3 dias</td>
+                    <td style="color: var(--primary); font-weight: bold;">5 minutos</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="slide-number">/ 05</div>
+    </div>
+
+    <!-- SLIDE 7: CTA -->
+    <div class="slide slide-capa" id="slide-cta">
+        <div class="badge success" style="background: white; color: black; border: none;">DISPONIBILIDADE LIMITADA</div>
+        <h1>Pronto para a Revolução?</h1>
+        <h2 style="color: var(--text-secondary); font-size: 1.25em;">Sua concorrência ainda está usando planilhas. Saia
+            na frente hoje.</h2>
+
+        <div style="margin: 50px 0; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <a href="https://wa.me/5561981457006?text=Gostaria%20de%20saber%20mais%20sobre%20a%20Engenharia%20de%20Leads!%20"
+                target="_blank" class="cta-button pulse-animation">
+                QUERO TRANSFORMAR MEUS RESULTADOS 🚀
+            </a>
+            <a href="detailed.html"
+                style="color: var(--text-secondary); text-decoration: none; border-bottom: 1px dotted var(--text-secondary); padding-bottom: 2px;">
+                Ver especificações técnicas completas
+            </a>
+        </div>
+
+        <p style="opacity: 0.5;">Implementação guiada em 4 semanas • Suporte Premium</p>
+    </div>
+
+</body>
+
+</html>
